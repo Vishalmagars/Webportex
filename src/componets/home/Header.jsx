@@ -1,5 +1,11 @@
 import React, { useEffect, useState } from "react";
-import { FaFacebookF, FaTwitter, FaInstagram, FaLinkedinIn } from "react-icons/fa";
+import {
+  FaFacebookF,
+  FaTwitter,
+  FaInstagram,
+  FaLinkedinIn,
+} from "react-icons/fa";
+import { FiMail, FiPhone } from "react-icons/fi";
 import { Link, useLocation } from "react-router-dom";
 
 const Header = () => {
@@ -24,12 +30,16 @@ const Header = () => {
 
   return (
     <header className="bg-white text-black font-sans sticky top-0 z-50">
+      {/* Top bar */}
       <div className="hidden md:flex justify-between items-center px-4 lg:px-16 py-2 border-b border-gray-200 text-xs tracking-wide text-gray-600">
         <div className="flex items-center gap-6">
-          <span>📞 +012 345 6789</span>
-          <span>📧 info@example.com</span>
-          <span>📍 123 Madison Ave, NY 1234</span>
-          <span>🕐 Mon–Fri: 09:00–18:00</span>
+          <span className="flex items-center gap-1">
+            <FiPhone /> +91 860-560-7801
+          </span>
+          <span className="flex items-center gap-1">
+            <FiMail /> Vishalmagar9579@gmail.com
+          </span>
+       
         </div>
         <div className="flex items-center gap-4">
           <FaFacebookF className="cursor-pointer hover:text-black hover:scale-110 transition" />
@@ -39,14 +49,13 @@ const Header = () => {
         </div>
       </div>
 
+      {/* Logo and Nav */}
       <div className="flex justify-between items-center px-4 lg:px-16 py-4">
         <div className="flex items-center gap-2">
-          <img
-            src="https://upload.wikimedia.org/wikipedia/commons/thumb/a/a7/React-icon.svg/1024px-React-icon.svg.png"
-            alt="logo"
-            className="w-9 h-9"
-          />
-          <span className="text-2xl font-bold tracking-wide">CRITO</span>
+          
+          <span className="text-3xl uppercase font-bold tracking-wide">
+            Imp<span className="text-blue-500 ">Ex</span>y
+          </span>
         </div>
 
         <nav className="hidden md:flex gap-8 text-sm uppercase tracking-widest font-medium">
@@ -76,6 +85,7 @@ const Header = () => {
           </Link>
         </div>
 
+        {/* Mobile menu toggle */}
         <div className="md:hidden">
           <button
             onClick={toggleMobileMenu}
@@ -87,21 +97,42 @@ const Header = () => {
         </div>
       </div>
 
+      {/* Mobile Menu */}
       {isMobileMenuOpen && (
         <nav className="md:hidden bg-white px-4 py-6 flex flex-col gap-4 text-sm uppercase tracking-widest font-medium border-t border-gray-200">
-          <Link to="/#hero" className="hover:underline underline-offset-4" onClick={() => setIsMobileMenuOpen(false)}>
+          <Link
+            to="/#hero"
+            className="hover:underline underline-offset-4"
+            onClick={() => setIsMobileMenuOpen(false)}
+          >
             Home
           </Link>
-          <Link to="/#about" className="hover:underline underline-offset-4" onClick={() => setIsMobileMenuOpen(false)}>
+          <Link
+            to="/#about"
+            className="hover:underline underline-offset-4"
+            onClick={() => setIsMobileMenuOpen(false)}
+          >
             About
           </Link>
-          <Link to="/#services" className="hover:underline underline-offset-4" onClick={() => setIsMobileMenuOpen(false)}>
+          <Link
+            to="/#plans"
+            className="hover:underline underline-offset-4"
+            onClick={() => setIsMobileMenuOpen(false)}
+          >
             Plan
           </Link>
-          <Link to="/#testimonials" className="hover:underline underline-offset-4" onClick={() => setIsMobileMenuOpen(false)}>
+          <Link
+            to="/#testimonials"
+            className="hover:underline underline-offset-4"
+            onClick={() => setIsMobileMenuOpen(false)}
+          >
             Testimonials
           </Link>
-          <Link to="/contact" className="hover:underline underline-offset-4" onClick={() => setIsMobileMenuOpen(false)}>
+          <Link
+            to="/contact"
+            className="hover:underline underline-offset-4"
+            onClick={() => setIsMobileMenuOpen(false)}
+          >
             Contact
           </Link>
         </nav>
