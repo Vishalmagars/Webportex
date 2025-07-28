@@ -1,0 +1,31 @@
+import React, { Component } from 'react';
+import HeroSection from '../componets/home/HeroSection';
+import FeaturesSection from '../componets/home/FeaturesSection';
+import About from '../componets/home/About';
+import Services from '../componets/home/Services';
+import WhyChooseUs from '../componets/home/WhyChooseUs';
+import ProjectsSection from '../componets/home/ProjectsSection';
+import TeamAndTestimonials from '../componets/home/TeamAndTestimonials';
+import Header from '../componets/home/Header';
+import ContactSection from '../componets/home/ContactSection';
+import Footer from '../componets/home/Footer';
+import WhatIDo from '../componets/about/WhatIDo';
+import MissionVisionRich from '../componets/about/MissionVision';
+
+export default class Home extends Component {
+  render() {
+    return (
+      <div>
+        
+        <HeroSection id="hero" />
+        <WhatIDo id="whatido" />
+        <About id="about" />
+        <Services id="plans" />
+        <WhyChooseUs id="whychooseus" />
+        <MissionVisionRich id="missionvision" />
+        <TeamAndTestimonials id="testimonials" />
+       
+      </div>
+    );
+  }
+}
