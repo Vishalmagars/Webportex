@@ -48,7 +48,7 @@ const HeroSection = ({
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8 }}
-            className="text-3xl sm:text-5xl uppercase md:text-6xl leading-tight font-light tracking-tight"
+            className="text-5xl sm:text-6xl uppercase md:text-6xl leading-tight font-light tracking-tight"
           >
             Want More <span className="font-semibold">Global Buyers</span>?<br />
             <span className="text-neutral-900">
