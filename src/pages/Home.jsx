@@ -13,6 +13,7 @@ import WhatIDo from '../componets/about/WhatIDo';
 import MissionVisionRich from '../componets/about/MissionVision';
 import TechStack from '../componets/home/TechStack';
 import Capabilities from '../componets/home/Capabilities';
+import FAQSection from '../componets/home/FAQsSection';
 
 export default class Home extends Component {
   render() {
@@ -28,6 +29,9 @@ export default class Home extends Component {
         <WhyChooseUs id="whychooseus" />
         <MissionVisionRich id="missionvision" />
         <TeamAndTestimonials id="testimonials" />
+        <FAQSection id="faqs" />
+        <ContactSection id="contact" />
+    
 
        
       </div>
