@@ -42,7 +42,7 @@ const WhatIDo = () => {
           </p>
 
           {/* Social Proof */}
-          <div className="flex items-center gap-6">
+          {/* <div className="flex items-center gap-6">
             <div className="flex -space-x-3">
               <img
                 src="https://i.pravatar.cc/50?img=1"
@@ -64,7 +64,7 @@ const WhatIDo = () => {
               <p className="text-xl font-medium text-black tracking-tight">5M+</p>
               <p className="text-sm text-gray-500">Trusted Worldwide</p>
             </div>
-          </div>
+          </div> */}
         </div>
 
         {/* RIGHT: Minimalist grid */}

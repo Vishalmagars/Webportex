@@ -5,7 +5,7 @@ const PlanHeroSection = () => {
     <section className="bg-white text-black py-10 px-6 md:px-20 font-sans">
       <div className="max-w-6xl mx-auto">
         {/* Badge */}
-        <p className="text-sm uppercase tracking-widest text-red-500 mb-4">
+        <p className="text-sm uppercase tracking-widest text-gray-500 mb-4">
           Plan Details
         </p>
 
@@ -33,15 +33,7 @@ const PlanHeroSection = () => {
           </p>
         </div>
 
-        {/* CTA Buttons */}
-        <div className="mt-10 flex gap-4">
-          <button className="uppercase text-sm tracking-wide bg-black text-white px-6 py-3 rounded-full hover:opacity-90 transition">
-            Get Started
-          </button>
-          <button className="uppercase text-sm tracking-wide border border-black px-6 py-3 rounded-full hover:bg-black hover:text-white transition">
-            Talk to Us
-          </button>
-        </div>
+       
       </div>
     </section>
   );

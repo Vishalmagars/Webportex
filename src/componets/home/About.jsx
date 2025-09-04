@@ -36,7 +36,7 @@ const About = ({id}) => {
         {/* RIGHT: About Content */}
         <div className="space-y-6">
           <p className="text-sm tracking-widest uppercase text-gray-500 font-medium">
-            About Webportex
+            About Implexy
           </p>
           <h2 className="text-4xl md:text-5xl font-light uppercase tracking-tight text-black leading-tight">
             Helping Exporters Build a Global Presence

@@ -61,7 +61,7 @@ const WhyChooseExportWeb = () => {
         {/* Image */}
         <div className="mt-20">
           <img
-            src="https://images.unsplash.com/photo-1593642634315-48f5414c3ad9?auto=format&fit=crop&w=1200&q=80"
+            src="https://images.unsplash.com/photo-1522071820081-009f0129c71c?q=80&w=870&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
             alt="Exporter Website Strategy"
             className="w-full h-[400px] object-cover rounded-xl shadow-md"
           />

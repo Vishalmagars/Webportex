@@ -19,7 +19,7 @@ const ContactSectionZara = () => {
             <h2 className="text-5xl md:text-6xl font-light uppercase tracking-tight leading-tight mb-6">
               Let’s Connect
             </h2>
-            <p className="text-sm leading-relaxed text-gray-600 max-w-md">
+            <p className="text-base md:text-lg leading-relaxed text-gray-700 max-w-md">
               Whether you’re launching your first export website or upgrading to a global‑ready platform, I’m here to help. 
               Tell me what you need — together we’ll build a digital presence that wins buyers and grows your business.
             </p>

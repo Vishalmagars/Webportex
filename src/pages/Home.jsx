@@ -11,6 +11,8 @@ import ContactSection from '../componets/home/ContactSection';
 import Footer from '../componets/home/Footer';
 import WhatIDo from '../componets/about/WhatIDo';
 import MissionVisionRich from '../componets/about/MissionVision';
+import TechStack from '../componets/home/TechStack';
+import Capabilities from '../componets/home/Capabilities';
 
 export default class Home extends Component {
   render() {
@@ -21,9 +23,13 @@ export default class Home extends Component {
         <WhatIDo id="whatido" />
         <About id="about" />
         <Services id="plans" />
+         <Capabilities id="capabilities" />
+        <TechStack id="techstack" />
+       
         <WhyChooseUs id="whychooseus" />
         <MissionVisionRich id="missionvision" />
         <TeamAndTestimonials id="testimonials" />
+
        
       </div>
     );

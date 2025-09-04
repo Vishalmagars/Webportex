@@ -6,8 +6,8 @@ import { Typewriter } from "react-simple-typewriter";
 
 const HeroSection = ({
   title = "Want More Buyers From Around the World?",
-  subtitle = "Webportex builds export‑ready websites that don’t just sit pretty—they work hard. Fast‑loading, mobile‑friendly, and built to turn curious visitors into serious inquiries. Tailored for exporters and manufacturers who are ready to grow.",
-  imageSrc = "https://images.unsplash.com/photo-1609203599090-1bea00d207b9?q=80&w=1471&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+  subtitle = "Implexy builds export‑ready websites that don’t just sit pretty—they work hard. Fast‑loading, mobile‑friendly, and built to turn curious visitors into serious inquiries. Tailored for exporters and manufacturers who are ready to grow.",
+  imageSrc = "https://images.unsplash.com/photo-1678690832871-8b9993c76aa8?q=80&w=870&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D ",
 }) => {
   const navigate = useNavigate();
 
