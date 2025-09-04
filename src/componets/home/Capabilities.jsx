@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import {
   FaEnvelopeOpenText,
   FaBell,
@@ -94,46 +94,74 @@ const featureGroups = [
 ];
 
 const FeaturesCatalog = ({ id }) => {
+  const [openIndex, setOpenIndex] = useState(null);
+
+  const toggleSection = (idx) => {
+    setOpenIndex(openIndex === idx ? null : idx);
+  };
+
   return (
     <section id={id} className="bg-white py-28 px-6 md:px-16 font-sans">
-      <div className="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-4 gap-16">
+      <div className="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-4 gap-16">
         {/* Sidebar Title */}
-        <div className="md:col-span-1">
+        <div className="lg:col-span-1">
           <h2 className="text-4xl md:text-5xl font-light uppercase tracking-tight text-black">
             Capabilities
           </h2>
           <p className="mt-6 text-gray-600 text-base leading-relaxed">
-            A complete toolkit designed for exporters & manufacturers — 
+            A complete toolkit designed for exporters & manufacturers —
             from simple engagement tools to powerful backend management.
           </p>
         </div>
 
         {/* Feature Groups */}
-        <div className="md:col-span-3 space-y-16">
-          {featureGroups.map((group, idx) => (
-            <div key={idx} className="border-b border-gray-200 pb-10">
-              <h3 className="text-lg uppercase font-medium tracking-wider text-gray-800 mb-8">
-                {group.category}
-              </h3>
-              <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-12">
-                {group.items.map((item, i) => (
-                  <div key={i} className="flex items-start gap-4">
-                    <div className="w-12 h-12 flex items-center justify-center rounded-full border border-gray-300 bg-white shadow-sm text-gray-900">
-                      {item.icon}
+        <div className="lg:col-span-3 space-y-12">
+          {featureGroups.map((group, idx) => {
+            const isOpen = openIndex === idx;
+
+            return (
+              <div key={idx} className="border-b border-gray-200 pb-6">
+                {/* Accordion Header (all screen sizes) */}
+                <button
+                  onClick={() => toggleSection(idx)}
+                  className="w-full flex justify-between items-center text-left"
+                >
+                  <h3 className="text-lg uppercase font-medium tracking-wider text-gray-800">
+                    {group.category}
+                  </h3>
+                  <span className="text-gray-500 text-xl">
+                    {isOpen ? "−" : "+"}
+                  </span>
+                </button>
+
+                {/* Items with smooth animation */}
+                <div
+                  className={`grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-10 overflow-hidden transition-all duration-500 ease-in-out`}
+                  style={{
+                    maxHeight: isOpen ? "2000px" : "0px",
+                    marginTop: isOpen ? "1rem" : "0px",
+                    opacity: isOpen ? 1 : 0,
+                  }}
+                >
+                  {group.items.map((item, i) => (
+                    <div key={i} className="flex items-start gap-4">
+                      <div className="w-12 h-12 flex items-center justify-center rounded-full border border-gray-300 bg-white shadow-sm text-gray-900">
+                        {item.icon}
+                      </div>
+                      <div>
+                        <h4 className="text-base font-medium text-gray-900 uppercase tracking-wide">
+                          {item.title}
+                        </h4>
+                        <p className="text-sm text-gray-600 mt-1 leading-relaxed">
+                          {item.desc}
+                        </p>
+                      </div>
                     </div>
-                    <div>
-                      <h4 className="text-base font-medium text-gray-900 uppercase tracking-wide">
-                        {item.title}
-                      </h4>
-                      <p className="text-sm text-gray-600 mt-1 leading-relaxed">
-                        {item.desc}
-                      </p>
-                    </div>
-                  </div>
-                ))}
+                  ))}
+                </div>
               </div>
-            </div>
-          ))}
+            );
+          })}
         </div>
       </div>
     </section>

@@ -21,11 +21,10 @@ export default class Home extends Component {
         
         <HeroSection id="hero" />
         <WhatIDo id="whatido" />
-        <About id="about" />
         <Services id="plans" />
-         <Capabilities id="capabilities" />
+        <Capabilities id="capabilities"/>
+        <About id="about" />
         <TechStack id="techstack" />
-       
         <WhyChooseUs id="whychooseus" />
         <MissionVisionRich id="missionvision" />
         <TeamAndTestimonials id="testimonials" />
