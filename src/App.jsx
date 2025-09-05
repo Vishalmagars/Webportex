@@ -5,7 +5,8 @@ import Footer from './componets/home/Footer'; // Adjust path if needed
 import Home from './pages/Home';
 import Contact from './pages/Contact';
 import NotFoundPage from './pages/NotFoundPage';
-import Plan1 from './pages/Plan1';
+import BlogSection from './componets/blogs/BlogSection';
+import BlogPage from './componets/blogs/BlogPage';
 
 const Layout = () => {
   const location = useLocation();
@@ -36,7 +37,8 @@ export default function App() {
           <Route path="/" element={<Home />} />
           <Route path="/contact" element={<Contact />} />
           <Route path="*" element={<NotFoundPage/>} />
-          <Route path="/plan" element={<Plan1/>} />
+          <Route path="/blog" element={<BlogSection/>} />
+           <Route path="/blogpage" element={<BlogPage/>} />
         </Route>
       </Routes>
     </BrowserRouter>

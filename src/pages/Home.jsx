@@ -14,14 +14,15 @@ import MissionVisionRich from '../componets/about/MissionVision';
 import TechStack from '../componets/home/TechStack';
 import Capabilities from '../componets/home/Capabilities';
 import FAQSection from '../componets/home/FAQsSection';
+import CaseStudySection from '../componets/home/CaseStudySection';
 
 export default class Home extends Component {
   render() {
     return (
       <div>
-        
         <HeroSection id="hero" />
         <WhatIDo id="whatido" />
+        <CaseStudySection/>
         <Services id="plans" />
         <Capabilities id="capabilities"/>
         <About id="about" />
@@ -29,11 +30,7 @@ export default class Home extends Component {
         <WhyChooseUs id="whychooseus" />
         <MissionVisionRich id="missionvision" />
         <TeamAndTestimonials id="testimonials" />
-        <FAQSection id="faqs" />
-        <ContactSection id="contact" />   
-    
-
-       
+        <FAQSection id="faqs" />   
       </div>
     );
   }
