@@ -1,5 +1,6 @@
 import React from "react";
 import { FaGlobe, FaHandshake, FaSearch, FaUserTie } from "react-icons/fa";
+import { motion } from "framer-motion";
 
 const points = [
   {
@@ -24,12 +25,43 @@ const points = [
   },
 ];
 
+// animation variants
+const fadeUp = {
+  hidden: { opacity: 0, y: 40 },
+  show: { opacity: 1, y: 0, transition: { duration: 0.7, ease: "easeOut" } },
+};
+
+const slideIn = (direction) => ({
+  hidden: { opacity: 0, x: direction === "left" ? -60 : 60 },
+  show: {
+    opacity: 1,
+    x: 0,
+    transition: { duration: 0.7, ease: "easeOut" },
+  },
+});
+
+const imageDrop = {
+  hidden: { opacity: 0, y: 80, scale: 0.9 },
+  show: {
+    opacity: 1,
+    y: 0,
+    scale: 1,
+    transition: { duration: 0.9, ease: "easeOut" },
+  },
+};
+
 const WhyChooseExportWeb = () => {
   return (
     <section className="bg-white py-24 px-6 md:px-20 font-sans">
       <div className="max-w-7xl mx-auto">
         {/* Header */}
-        <div className="mb-14 max-w-3xl">
+        <motion.div
+          variants={fadeUp}
+          initial="hidden"
+          whileInView="show"
+          viewport={{ once: false, amount: 0.2 }}
+          className="mb-14 max-w-3xl"
+        >
           <p className="text-sm uppercase tracking-widest text-gray-500 mb-2">
             Why Exporters Choose Us
           </p>
@@ -37,14 +69,23 @@ const WhyChooseExportWeb = () => {
             Built for Export Growth. Backed by Strategy.
           </h2>
           <p className="text-gray-700 text-base mt-4 leading-relaxed">
-            Your digital presence shouldn't be your weakest link. We help Indian manufacturers and exporters go from invisible to in-demand — through smart, high-converting websites built for global trade.
+            Your digital presence shouldn't be your weakest link. We help Indian
+            manufacturers and exporters go from invisible to in-demand — through
+            smart, high-converting websites built for global trade.
           </p>
-        </div>
+        </motion.div>
 
         {/* Grid */}
         <div className="grid sm:grid-cols-2 gap-12">
           {points.map((item, idx) => (
-            <div key={idx} className="flex items-start gap-5">
+            <motion.div
+              key={idx}
+              variants={slideIn(idx % 2 === 0 ? "left" : "right")}
+              initial="hidden"
+              whileInView="show"
+              viewport={{ once: false, amount: 0.2 }}
+              className="flex items-start gap-5"
+            >
               <div className="text-black">{item.icon}</div>
               <div>
                 <h3 className="text-lg font-semibold uppercase tracking-wide mb-2">
@@ -54,18 +95,24 @@ const WhyChooseExportWeb = () => {
                   {item.desc}
                 </p>
               </div>
-            </div>
+            </motion.div>
           ))}
         </div>
 
         {/* Image */}
-        <div className="mt-20">
+        <motion.div
+          variants={imageDrop}
+          initial="hidden"
+          whileInView="show"
+          viewport={{ once: false, amount: 0.2 }}
+          className="mt-20"
+        >
           <img
             src="https://images.unsplash.com/photo-1522071820081-009f0129c71c?q=80&w=870&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
             alt="Exporter Website Strategy"
             className="w-full h-[400px] object-cover rounded-xl shadow-md"
           />
-        </div>
+        </motion.div>
       </div>
     </section>
   );

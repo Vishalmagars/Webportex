@@ -30,7 +30,7 @@ export default class Home extends Component {
         <MissionVisionRich id="missionvision" />
         <TeamAndTestimonials id="testimonials" />
         <FAQSection id="faqs" />
-        <ContactSection id="contact" />
+        <ContactSection id="contact" />   
     
 
        

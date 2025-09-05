@@ -1,62 +1,87 @@
-import React from 'react';
+import React from "react";
 import {
   FaJava,
   FaHtml5,
   FaCss3Alt,
   FaJs,
   FaReact,
-} from 'react-icons/fa';
-import { SiTailwindcss, SiMongodb, SiMysql } from 'react-icons/si';
+} from "react-icons/fa";
+import { SiTailwindcss, SiMongodb, SiMysql } from "react-icons/si";
+import { motion } from "framer-motion";
 
 const techStack = [
   {
-    name: 'Java',
+    name: "Java",
     icon: <FaJava className="text-orange-600 text-5xl" />,
-    desc: 'Secure backend development with Spring Boot & enterprise-grade apps.',
+    desc: "Secure backend development with Spring Boot & enterprise-grade apps.",
   },
   {
-    name: 'HTML5',
+    name: "HTML5",
     icon: <FaHtml5 className="text-red-500 text-5xl" />,
-    desc: 'Clean, semantic markup for accessible and reliable websites.',
+    desc: "Clean, semantic markup for accessible and reliable websites.",
   },
   {
-    name: 'CSS3',
+    name: "CSS3",
     icon: <FaCss3Alt className="text-blue-500 text-5xl" />,
-    desc: 'Responsive layouts and pixel-perfect designs.',
+    desc: "Responsive layouts and pixel-perfect designs.",
   },
   {
-    name: 'JavaScript',
+    name: "JavaScript",
     icon: <FaJs className="text-yellow-500 text-5xl" />,
-    desc: 'Interactive and dynamic client-side functionality.',
+    desc: "Interactive and dynamic client-side functionality.",
   },
   {
-    name: 'React',
+    name: "React",
     icon: <FaReact className="text-cyan-500 text-5xl" />,
-    desc: 'Modern, component-based UI development for speed & scale.',
+    desc: "Modern, component-based UI development for speed & scale.",
   },
   {
-    name: 'Tailwind CSS',
+    name: "Tailwind CSS",
     icon: <SiTailwindcss className="text-sky-400 text-5xl" />,
-    desc: 'Utility-first styling framework for rapid custom designs.',
+    desc: "Utility-first styling framework for rapid custom designs.",
   },
   {
-    name: 'MongoDB',
+    name: "MongoDB",
     icon: <SiMongodb className="text-green-600 text-5xl" />,
-    desc: 'Scalable NoSQL database for modern apps.',
+    desc: "Scalable NoSQL database for modern apps.",
   },
   {
-    name: 'MySQL',
+    name: "MySQL",
     icon: <SiMysql className="text-blue-700 text-5xl" />,
-    desc: 'Reliable relational database for structured data.',
+    desc: "Reliable relational database for structured data.",
   },
 ];
 
+// parent: stagger children
+const containerVariants = {
+  hidden: { opacity: 0 },
+  show: {
+    opacity: 1,
+    transition: {
+      staggerChildren: 0.15,
+    },
+  },
+};
+
+// child: drop from top with bounce
+const cardVariants = {
+  hidden: { opacity: 0, y: -80, scale: 0.95 },
+  show: {
+    opacity: 1,
+    y: 0,
+    scale: 1,
+    transition: {
+      type: "spring",
+      stiffness: 120,
+      damping: 12,
+      duration: 0.6,
+    },
+  },
+};
+
 const TechStack = ({ id }) => {
   return (
-    <section
-      id={id}
-      className="bg-white py-20 px-6 md:px-16 font-sans"
-    >
+    <section id={id} className="bg-white py-20 px-6 md:px-16 font-sans">
       <div className="max-w-7xl mx-auto">
         {/* Header */}
         <div className="text-center mb-20">
@@ -72,11 +97,18 @@ const TechStack = ({ id }) => {
           </p>
         </div>
 
-        {/* Grid */}
-        <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-12">
+        {/* Grid with drop-in animation */}
+        <motion.div
+          variants={containerVariants}
+          initial="hidden"
+          whileInView="show"
+          viewport={{ once: false, amount: 0.2 }}
+          className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-12"
+        >
           {techStack.map((tech, idx) => (
-            <div
+            <motion.div
               key={idx}
+              variants={cardVariants}
               className="flex flex-col items-center text-center group"
             >
               <div className="mb-4 transform transition duration-300 group-hover:scale-110">
@@ -86,9 +118,9 @@ const TechStack = ({ id }) => {
               <p className="text-sm text-gray-600 leading-relaxed">
                 {tech.desc}
               </p>
-            </div>
+            </motion.div>
           ))}
-        </div>
+        </motion.div>
       </div>
     </section>
   );

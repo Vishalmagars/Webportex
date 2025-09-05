@@ -6,8 +6,8 @@ import { Typewriter } from "react-simple-typewriter";
 
 const HeroSection = ({
   title = "Want More Buyers From Around the World?",
-  subtitle = "Implexy builds export‑ready websites that don’t just sit pretty—they work hard. Fast‑loading, mobile‑friendly, and built to turn curious visitors into serious inquiries. Tailored for exporters and manufacturers who are ready to grow.",
-  imageSrc = "https://images.unsplash.com/photo-1678690832871-8b9993c76aa8?q=80&w=870&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D ",
+  subtitle = "Implexy builds export-ready websites that don’t just sit pretty—they work hard. Fast-loading, mobile-friendly, and built to turn curious visitors into serious inquiries. Tailored for exporters and manufacturers who are ready to grow.",
+  imageSrc = "./hero.jpg",
 }) => {
   const navigate = useNavigate();
 
@@ -15,11 +15,9 @@ const HeroSection = ({
   const [showFinalText, setShowFinalText] = useState(false);
 
   useEffect(() => {
-    // Wait 0.5 sec before typing starts
     const delayStart = setTimeout(() => {
       setStartTyping(true);
 
-      // Then stop typing after 2.5 seconds
       const stopTyping = setTimeout(() => {
         setShowFinalText(true);
       }, 2500);
@@ -31,23 +29,23 @@ const HeroSection = ({
   }, []);
 
   return (
-    <section className="w-full min-h-screen bg-white text-neutral-900 px-6 md:px-20 py-16">
+    <section className="w-full min-h-screen bg-white text-neutral-900 px-6 md:px-20 py-16 overflow-hidden">
       <div className="max-w-7xl mx-auto flex flex-col md:flex-row items-center gap-10">
         {/* Text Column */}
         <div className="flex-1 text-center md:text-left">
           <motion.p
-            initial={{ opacity: 0, y: -10 }}
+            initial={{ opacity: 0, y: -20 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6 }}
+            transition={{ duration: 0.8, ease: "easeOut" }}
             className="uppercase tracking-[0.2em] text-xs text-neutral-600 mb-4"
           >
             Websites That Sell. Not Just Show.
           </motion.p>
 
           <motion.h1
-            initial={{ opacity: 0, y: 20 }}
+            initial={{ opacity: 0, y: 40 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8 }}
+            transition={{ duration: 1, ease: "easeOut" }}
             className="text-5xl sm:text-6xl uppercase md:text-6xl leading-tight font-light tracking-tight"
           >
             Want More <span className="font-semibold">Global Buyers</span>?<br />
@@ -71,9 +69,9 @@ const HeroSection = ({
           </motion.h1>
 
           <motion.p
-            initial={{ opacity: 0, y: 30 }}
+            initial={{ opacity: 0, y: 40 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 0.2, duration: 0.8 }}
+            transition={{ delay: 0.3, duration: 1, ease: "easeOut" }}
             className="mt-6 text-neutral-700 text-base md:text-lg max-w-xl mx-auto md:mx-0 leading-relaxed"
           >
             {subtitle}
@@ -82,35 +80,41 @@ const HeroSection = ({
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 0.4, duration: 0.8 }}
+            transition={{ delay: 0.6, duration: 0.9, ease: "easeOut" }}
             className="mt-8 flex flex-col sm:flex-row gap-4 justify-center md:justify-start"
           >
-            <button
+            <motion.button
+              whileHover={{ scale: 1.05, backgroundColor: "#171717", color: "#fff" }}
+              whileTap={{ scale: 0.95 }}
               onClick={() => navigate("/contact")}
-              className="border border-neutral-900 text-neutral-900 px-8 py-3 text-sm font-semibold hover:bg-neutral-900 hover:text-white transition"
+              className="border border-neutral-900 text-neutral-900 px-8 py-3 text-sm font-semibold transition rounded-md shadow-sm"
             >
               Build My Export Website
-            </button>
-            <button
+            </motion.button>
+
+            <motion.button
+              whileHover={{ x: 5, color: "#111" }}
+              whileTap={{ scale: 0.95 }}
               onClick={() => navigate("/services")}
-              className="text-neutral-800 border-b border-neutral-700 inline-flex items-center gap-2 text-sm hover:text-neutral-900"
+              className="text-neutral-800 border-b border-neutral-700 inline-flex items-center gap-2 text-sm transition"
             >
               Show Me How <FaArrowRight />
-            </button>
+            </motion.button>
           </motion.div>
         </div>
 
         {/* Image Column */}
         <motion.div
-          initial={{ opacity: 0, scale: 0.95 }}
+          initial={{ opacity: 0, scale: 0.9 }}
           animate={{ opacity: 1, scale: 1 }}
-          transition={{ delay: 0.6, duration: 0.8 }}
+          transition={{ delay: 0.8, duration: 1, ease: "easeOut" }}
+          whileHover={{ scale: 1.03, rotate: 1 }}
           className="flex-1 w-full"
         >
           <img
             src={imageSrc}
             alt="Elegant Export Website Preview"
-            className="w-full h-auto rounded-sm object-cover shadow-md"
+            className="w-full h-auto rounded-sm object-cover shadow-lg transition-transform duration-500"
           />
         </motion.div>
       </div>

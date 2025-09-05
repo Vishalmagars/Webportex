@@ -1,5 +1,6 @@
 import React from "react";
 import { FaLightbulb, FaPalette, FaStar, FaCogs } from "react-icons/fa";
+import { motion } from "framer-motion";
 
 const WhatIDo = () => {
   const features = [
@@ -26,14 +27,42 @@ const WhatIDo = () => {
     },
   ];
 
+  // Animation variants
+  const fadeInLeft = {
+    hidden: { opacity: 0, x: -50 },
+    show: { opacity: 1, x: 0, transition: { duration: 0.7, ease: "easeOut" } },
+  };
+
+  const fadeInRight = {
+    hidden: { opacity: 0, x: 50 },
+    show: { opacity: 1, x: 0, transition: { duration: 0.7, ease: "easeOut" } },
+  };
+
   return (
-    <section className="bg-white py-24 px-6 md:px-20 font-sans">
-      <div className="max-w-7xl mx-auto grid lg:grid-cols-2 gap-20 items-start">
+    <section className="relative bg-white py-24 px-6 md:px-20 font-sans overflow-hidden">
+      {/* Overlay Reveal Effect */}
+      <motion.div
+        initial={{ x: 0 }}
+        whileInView={{ x: "100%" }}
+        transition={{ duration: 1, ease: "easeInOut" }}
+        viewport={{ once: false }}
+        className="absolute top-0 left-0 w-full h-full bg-black z-10"
+      />
+
+      <div className="relative z-20 max-w-7xl mx-auto grid lg:grid-cols-2 gap-20 items-start">
         {/* LEFT on desktop: Feature Cards */}
-        <div className="order-2 lg:order-1 grid grid-cols-1 sm:grid-cols-2 gap-8">
+        <motion.div
+          initial="hidden"
+          whileInView="show"
+          viewport={{ once: false, amount: 0.3 }}
+          transition={{ staggerChildren: 0.3 }}
+          className="order-2 lg:order-1 grid grid-cols-1 sm:grid-cols-2 gap-8"
+        >
           {features.map((f, i) => (
-            <div
+            <motion.div
               key={i}
+              variants={i % 2 === 0 ? fadeInLeft : fadeInRight}
+              transition={{ delay: i * 0.2 }}
               className={`group border border-black/20 p-8 rounded-none hover:-translate-y-1 transition-transform duration-300 ${
                 f.active ? "bg-black text-white" : "bg-white text-black"
               }`}
@@ -61,22 +90,34 @@ const WhatIDo = () => {
               >
                 {f.desc}
               </p>
-            </div>
+            </motion.div>
           ))}
-        </div>
+        </motion.div>
 
-        {/* RIGHT on desktop: Text (on mobile appears first) */}
-        <div className="order-1 lg:order-2 space-y-10 text-right">
-          <h2 className="text-5xl md:text-6xl font-light uppercase tracking-tight text-black leading-tight">
+        {/* RIGHT on desktop: Text */}
+        <motion.div
+          initial="hidden"
+          whileInView="show"
+          viewport={{ once: false, amount: 0.3 }}
+          transition={{ staggerChildren: 0.3 }}
+          className="order-1 lg:order-2 space-y-10 text-right"
+        >
+          <motion.h2
+            variants={fadeInRight}
+            className="text-5xl md:text-6xl font-light uppercase tracking-tight text-black leading-tight"
+          >
             What We Do <br className="hidden md:block" /> For Exporters
-          </h2>
-          <p className="text-gray-700 text-base leading-relaxed max-w-lg">
+          </motion.h2>
+          <motion.p
+            variants={fadeInRight}
+            className="text-gray-700 text-base leading-relaxed max-w-lg ml-auto"
+          >
             We don’t build generic websites. We create digital tools that help
             exporters and manufacturers in India win trust, showcase products,
             and open doors to new global markets. Every page is crafted to make
             your business look world-class and ready for international trade.
-          </p>
-        </div>
+          </motion.p>
+        </motion.div>
       </div>
     </section>
   );

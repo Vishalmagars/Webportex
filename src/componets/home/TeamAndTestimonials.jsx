@@ -18,7 +18,7 @@ const testimonials = [
   {
     name: "Sandeep Rao",
     role: "CEO, CraftHub Exports",
-    text: "“Our leads doubled after launch. Their export‑focused features make managing products and clients seamless.”",
+    text: "“Our leads doubled after launch. Their export-focused features make managing products and clients seamless.”",
     image: "https://i.pravatar.cc/80?img=22",
   },
 ];
@@ -34,9 +34,23 @@ const TestimonialSection = ({ id }) => {
   }, []);
 
   return (
-    <section id={id} className="bg-white py-28 px-6 md:px-16 font-sans">
+    <motion.section
+      id={id}
+      className="bg-white py-28 px-6 md:px-16 font-sans"
+      initial={{ opacity: 0, y: 60 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      viewport={{ once: true, amount: 0.2 }}
+      transition={{ duration: 0.8, ease: "easeOut" }}
+    >
       <div className="max-w-5xl mx-auto">
-        <div className="text-left md:text-center mb-20">
+        {/* Header */}
+        <motion.div
+          className="text-left md:text-center mb-20"
+          initial={{ opacity: 0, y: 40 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.7, delay: 0.2 }}
+          viewport={{ once: true }}
+        >
           <p className="text-xs uppercase tracking-widest text-gray-500 mb-2">
             What Our Clients Say
           </p>
@@ -44,27 +58,40 @@ const TestimonialSection = ({ id }) => {
             Trusted by Exporters <br className="hidden md:block" />
             <span className="font-semibold">Worldwide</span>
           </h2>
-        </div>
+        </motion.div>
 
+        {/* Testimonials */}
         <div className="relative overflow-hidden">
-          <AnimatePresence mode="wait">
+          <AnimatePresence mode="wait" initial={false}>
             <motion.div
               key={index}
-              initial={{ opacity: 0, y: 30 }}
-              animate={{ opacity: 1, y: 0 }}
-              exit={{ opacity: 0, y: -30 }}
-              transition={{ duration: 0.5, ease: "easeInOut" }}
+              initial={{ opacity: 0, x: 100 }}
+              animate={{ opacity: 1, x: 0 }}
+              exit={{ opacity: 0, x: -100 }}
+              transition={{ duration: 0.6, ease: "easeInOut" }}
               className="flex flex-col items-center text-center px-4 md:px-12"
             >
-              <FaQuoteLeft className="text-black text-3xl mb-6" />
+              <motion.div
+                initial={{ scale: 0.6, opacity: 0 }}
+                animate={{ scale: 1, opacity: 1 }}
+                transition={{ duration: 0.6, ease: "easeOut" }}
+              >
+                <FaQuoteLeft className="text-black text-3xl mb-6" />
+              </motion.div>
+
               <p className="text-lg md:text-xl text-gray-800 font-light leading-relaxed max-w-3xl">
                 {testimonials[index].text}
               </p>
+
               <div className="flex items-center gap-4 mt-10">
-                <img
+                <motion.img
+                  key={testimonials[index].image}
                   src={testimonials[index].image}
                   alt={testimonials[index].name}
-                  className="w-14 h-14 rounded-full object-cover border border-gray-300"
+                  initial={{ scale: 0.7, opacity: 0 }}
+                  animate={{ scale: 1, opacity: 1 }}
+                  transition={{ duration: 0.5, ease: "easeOut", delay: 0.2 }}
+                  className="w-14 h-14 rounded-full object-cover border border-gray-300 shadow-md"
                 />
                 <div className="text-left">
                   <p className="text-black font-medium">{testimonials[index].name}</p>
@@ -75,20 +102,24 @@ const TestimonialSection = ({ id }) => {
           </AnimatePresence>
         </div>
 
+        {/* Dots */}
         <div className="flex justify-center gap-4 mt-12">
           {testimonials.map((_, i) => (
-            <button
+            <motion.button
               key={i}
               onClick={() => setIndex(i)}
               aria-label={`Go to testimonial ${i + 1}`}
-              className={`w-3.5 h-3.5 rounded-full transition-all duration-300 ${
+              className={`w-3.5 h-3.5 rounded-full ${
                 i === index ? "bg-black" : "bg-gray-300 hover:bg-gray-400"
               }`}
+              whileTap={{ scale: 0.8 }}
+              animate={i === index ? { scale: 1.3 } : { scale: 1 }}
+              transition={{ type: "spring", stiffness: 300, damping: 20 }}
             />
           ))}
         </div>
       </div>
-    </section>
+    </motion.section>
   );
 };
 
